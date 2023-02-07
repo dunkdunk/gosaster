@@ -1,0 +1,15 @@
+[
+  {
+    "extensions": [
+      ".js",
+      ".jsx"
+    ],
+    "regex": "^(?:child_process\\.exec|eval)\\($"
+  },
+  {
+    "extensions": [
+      ".html"
+    ],
+    "regex": "^innerHTML=(?:\"\"|[)$"
+  }
+]
