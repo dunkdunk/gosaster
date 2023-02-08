@@ -21,13 +21,13 @@ type Definition struct {
 }
 
 func importDefinitions() []Definition {
-	// Let's first read the `config.json` file
+	// Let's first read the `functions.json` file
 	content, err := ioutil.ReadFile("./definitions/functions.json")
 	if err != nil {
 		log.Fatal("Error when opening file: ", err)
 	}
 
-	// Unmarshall the data into `definitions`
+	// Unmarshall the data into `payload`
 	var payload []Definition
 	err = json.Unmarshal(content, &payload)
 	if err != nil {
@@ -38,7 +38,7 @@ func importDefinitions() []Definition {
 }
 
 func visit(path string, di fs.DirEntry, err error) error {
-	// If the path is a file, exec grep on it
+	// If the path is a file, continue
 	if !di.IsDir() {
 		// Get the file extension
 		extension := filepath.Ext(path)
@@ -57,7 +57,8 @@ func visit(path string, di fs.DirEntry, err error) error {
 
 					// If the output is code 0, print the output
 					if err == nil {
-						fmt.Printf("%s", out)
+						// Print the file path and output on two lines
+						fmt.Printf("%s\n%s", path, out)
 					}
 				}
 			}

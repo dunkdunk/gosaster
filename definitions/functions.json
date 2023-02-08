@@ -4,7 +4,7 @@
       ".js",
       ".jsx"
     ],
-    "regex": "^(?:child_process\\.exec|eval)\\($"
+    "regex": "eval("
   },
   {
     "extensions": [
