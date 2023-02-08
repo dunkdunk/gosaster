@@ -2,14 +2,65 @@
   {
     "extensions": [
       ".js",
-      ".jsx"
+      ".jsx",
+      ".ts",
+      ".tsx"
     ],
-    "regex": "eval("
+    "regex": "(eval|child_process\\.exec)\\("
   },
   {
     "extensions": [
-      ".html"
+      ".html",
+      ".htm"
     ],
-    "regex": "^innerHTML=(?:\"\"|[)$"
+    "regex": "innerHTML"
+  },
+  {
+    "extensions": [
+      ".php",
+      ".php3",
+      ".php4",
+      ".php5",
+      ".phtml",
+      ".inc"
+    ],
+    "regex": "(exec|passthru|system|shell_exec|popen|proc_open|pcntl_exec|assert)\\("
+  },
+  {
+    "extensions": [
+      ".py",
+      ".pyw",
+      ".pyc",
+      ".pyo",
+      ".pyd",
+      ".pyz",
+      ".pywz",
+      ".pyi",
+      ".pyt",
+      ".pywz"
+    ],
+    "regex": "(exec|eval|urllib_urlopen|paramiko\\.exec_command|SSHClient\\.invoke_shell|subprocess)\\("
+  },
+  {
+    "extensions": [
+      ".rb",
+      ".rbw",
+      ".rhtml",
+      ".rjs",
+      ".rxml",
+      ".erb"      
+    ],
+    "regex": "(exec|syscall|system|eval|constantize|render)\\("
+  },
+  {
+    "extensions": [
+      ".java",
+      ".jsp",
+      ".jspx",
+      ".jhtm",
+      ".jhtml",
+      ".jspf"
+    ],
+    "regex": "(Runtime\\.getRuntime\\(\\)|ProcessBuilder|Process|eval|exec|)\\("
   }
 ]

@@ -51,7 +51,7 @@ func visit(path string, di fs.DirEntry, err error) error {
 					filesScanned++
 
 					// Grep the individual file using the matching regex and return the results with a line number and colorized
-					cmd := exec.Command("grep", "-n", "--color=always", "-e", definition.Regex, path)
+					cmd := exec.Command("grep", "-n", "--color=always", "-E", definition.Regex, path)
 
 					out, err := cmd.Output()
 
