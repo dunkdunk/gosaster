@@ -14,6 +14,7 @@ import (
 // Global variables
 var definitions []Definition
 var filesScanned int = 0
+var ignoredDirectories []string
 
 type Definition struct {
 	Extensions []string
@@ -38,6 +39,13 @@ func importDefinitions() []Definition {
 }
 
 func visit(path string, di fs.DirEntry, err error) error {
+	// If the path is a directory and the directory name is in the ignoredDirectories array, skip it
+	for _, ignoredDirectory := range ignoredDirectories {
+		if di.IsDir() && di.Name() == ignoredDirectory {
+			return filepath.SkipDir
+		}
+	}
+
 	// If the path is a file, continue
 	if !di.IsDir() {
 		// Get the file extension
@@ -83,6 +91,14 @@ func main() {
 	if _, err := os.Stat(root); os.IsNotExist(err) {
 		fmt.Printf("The root directory %s does not exist\n", root)
 		os.Exit(1)
+	}
+
+	// Get any optional flags passed
+	flags := os.Args[2:]
+
+	// If the --ignore flag is passed, set ignoredDirectories to values passed
+	if len(flags) > 0 && flags[0] == "--ignore" {
+		ignoredDirectories = flags[1:]
 	}
 
 	// Call importDefinitions() to get the definitions and store them in the global variable
