@@ -45,12 +45,17 @@
     "extensions": [
       ".rb",
       ".rbw",
-      ".rhtml",
       ".rjs",
-      ".rxml",
-      ".erb"      
+      ".rxml"
     ],
     "regex": "(exec|syscall|system|eval|constantize|render)\\("
+  },
+  {
+    "extensions": [
+      ".rhtml",
+      ".erb"      
+    ],
+    "regex": "(raw|html_safe|content_tag|innerHTML|<%==)"
   },
   {
     "extensions": [
