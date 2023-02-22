@@ -13,7 +13,7 @@
       ".html",
       ".htm"
     ],
-    "regex": "innerHTML"
+    "regex": "(innerHTML|document\\.write)"
   },
   {
     "extensions": [
